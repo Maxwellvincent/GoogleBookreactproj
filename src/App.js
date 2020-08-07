@@ -1,26 +1,83 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import GoogleBookmark from './googleBookmark/googleBookmark';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      books: [
+        {
+          title: "",
+          author: "",
+          link: ""
+        },
+
+      ],
+      userSearch: 'narnia'
+    }
+
+  }
+
+  handleUserSearch(userSearch){
+    this.setState({
+        userSearch
+    });
+
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${userSearch}`;
+    // const options = {
+    //   method: 'GET',
+    //   headers: {
+  
+    //   }
+    // };
+  
+    fetch(url)
+    .then(resp => resp.json())
+    .then(data => {
+      const arrOfBooks = data.items.map(item => {
+       const {authors, imageLinks, title} = item.volumeInfo;
+        return [authors, imageLinks, title];
+      });
+     this.setState({
+       books: arrOfBooks
+     });
+    })
+    .catch(err => console.log(err))
+
 }
 
-export default App;
+componentDidMount(){
+  const userSearch = this.state.userSearch;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${userSearch}`;
+  // const options = {
+  //   method: 'GET',
+  //   headers: {
+
+  //   }
+  // };
+
+  fetch(url)
+  .then(resp => resp.json())
+  .then(data => {
+    const arrOfBooks = data.items.map(item => {
+     const {authors, imageLinks, title} = item.volumeInfo;
+      return [authors, imageLinks, title];
+    });
+   this.setState({
+     books: arrOfBooks
+   });
+  })
+  .catch(err => console.log(err))
+}
+
+  render(){
+    // console.log(this.state.books);
+    return (
+      <div className="App">
+        <GoogleBookmark books={this.state.books} searchChange={(e) => this.handleUserSearch(e)}/>
+      </div>
+    );
+  }
+ 
+}
+

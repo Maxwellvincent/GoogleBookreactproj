@@ -39,8 +39,12 @@ export default class App extends React.Component {
       fetch(url)
       .then(resp => resp.json())
       .then(data => {
-        console.log(data);
+        
         if(data.totalItems === 0){
+          console.log("This is firing!!");
+          this.setState({
+            books: []
+          })
           return <ErrorMessage />
         } else {
           console.log(data)

@@ -5,7 +5,7 @@ export default class FilterForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            printType: "all", 
+            printType: "", 
             bookType: "" 
         }
     }
@@ -38,7 +38,7 @@ export default class FilterForm extends Component {
             <form className="filter-form" onSubmit={e => this.handleSubmit(e)}>
                 <label >Print Type: </label>
                 <select id="print-type" value={this.state.print} onChange={(e) => this.handlePrintChange(e.target.value)}>
-                    <option value="All">All</option>
+                    <option value="all">All</option>
                     <option value="books">Books</option>
                     <option value="magazines">Magazines</option>
                     

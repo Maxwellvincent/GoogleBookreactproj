@@ -1,7 +1,7 @@
 import React from "react";
 import SearchForm from '../searchForm/searchForm';
 import FilterForm from '../filterForm/filterForm';
-
+import BookList from '../bookList/bookList';
 export default function ErrorMessage(props){
     return(
         <div>
@@ -13,7 +13,7 @@ export default function ErrorMessage(props){
                 printChange={this.props.printChange}
                 bookChange={this.props.bookChange}
             />
-            "this is empty"
+            <BookList prac={this.props}> No related books, enter a new search</BookList>
         </div>
     )
 }

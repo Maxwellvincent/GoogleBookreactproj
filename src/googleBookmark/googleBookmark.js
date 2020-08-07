@@ -35,7 +35,7 @@ export default class GoogleBookmark extends Component{
                 "this is empty"
             </div>;
 
-        console.log(isAvail);
+        // console.log(isAvail);
         return(
             <div>
                 {isAvail}

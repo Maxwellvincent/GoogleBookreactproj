@@ -5,8 +5,8 @@ export default class FilterForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            printType: "All",
-            bookType: "No Filter"
+            printType: "all", 
+            bookType: "" 
         }
     }
 
@@ -29,15 +29,15 @@ export default class FilterForm extends Component {
     handleSubmit(e){
         e.preventDefault()
         // pass to App.js function all data for a new url search
-        console.log("this works");
+        this.props.bookChange(this.state.bookType);
+        this.props.printChange(this.state.printType);
     }
 
     render(){
-
         return(
-            <form className="filter-form" onSubmit={this.handleSubmit}>
+            <form className="filter-form" onSubmit={e => this.handleSubmit(e)}>
                 <label >Print Type: </label>
-                <select id="print-type" value={this.state.printType} onChange={(e) => this.handlePrintChange(e.target.value)}>
+                <select id="print-type" value={this.state.print} onChange={(e) => this.handlePrintChange(e.target.value)}>
                     <option value="All">All</option>
                     <option value="books">Books</option>
                     <option value="magazines">Magazines</option>
@@ -45,7 +45,7 @@ export default class FilterForm extends Component {
                 </select>
 
                 <label >Book Type: </label>
-                <select id="book-type" value={this.state.bookType} onChange={(e) => this.handleBookChange(e.target.value)}>
+                <select id="book-type" value={this.state.volume} onChange={(e) => this.handleBookChange(e.target.value)}>
                     <option value="No Filter">No Filter</option>
                     <option value="ebooks">ebooks</option>
                     <option value="free-ebooks">free-ebooks</option>

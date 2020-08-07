@@ -8,13 +8,14 @@ export default function BookItem(props) {
         borderBottomStyle: "solid"
         }
     
-    
-    const url = Object.values(props).map(item => item.smallThumbnail);
+        const {thumbnail} = Object.values(props)[1];
+        // console.log(thumbnail);
+    // const url = Object.values(props).map(item => item.smallThumbnail);
     
     return(
-        
+        // Write if statement if no img is found
         <li style={style}>
-            <img src={url[1]} alt=""/>
+            <img src={thumbnail} alt=""/>
             <p>{props[2]}</p>
             <p>{props[0]}</p>
 

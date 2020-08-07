@@ -19,11 +19,11 @@ export default class SearchForm extends Component {
 
     handleSubmit(e){
         e.preventDefault(); 
-        
+        console.log(this.state.userInput);
         console.log(this.state.userInput);
         this.props.searchChange(this.state.userInput);
         this.setState({
-            userInput: ""
+            userInput: this.state.userInput
         })
     }
 

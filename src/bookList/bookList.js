@@ -15,7 +15,7 @@ export default class BookList extends Component {
         }
 
         // console.log(this.props.books.map((item,index) => console.log(item)));
-
+        console.log(this.props.books)
         const books = this.props.books.map((item, i) => <BookItem {...item} key={i}/>);
         return (
             <div style={style} >

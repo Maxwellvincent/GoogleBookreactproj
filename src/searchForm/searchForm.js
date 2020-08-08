@@ -5,7 +5,7 @@ export default class SearchForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            userInput: " "
+            userInput: "narnia"
         }
     }
 

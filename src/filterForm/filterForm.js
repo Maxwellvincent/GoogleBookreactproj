@@ -31,6 +31,7 @@ export default class FilterForm extends Component {
         // pass to App.js function all data for a new url search
         this.props.bookChange(this.state.bookType);
         this.props.printChange(this.state.printType);
+        this.props.filterForm(this.state.bookType, this.state.printType);
     }
 
     render(){
@@ -46,7 +47,9 @@ export default class FilterForm extends Component {
 
                 <label >Book Type: </label>
                 <select id="book-type" value={this.state.volume} onChange={(e) => this.handleBookChange(e.target.value)}>
-                    <option value="No Filter">No Filter</option>
+                <option value=" ">No Filter</option>
+                    <option value="full">full Text</option>
+                    <option value="partial">partial Text</option>
                     <option value="ebooks">ebooks</option>
                     <option value="free-ebooks">free-ebooks</option>
                     <option value="paid-ebooks">paid-ebooks</option>

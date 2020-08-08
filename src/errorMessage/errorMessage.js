@@ -16,7 +16,7 @@ export default function ErrorMessage(props){
                 // printChange={this.props.printChange}
                 // bookChange={this.props.bookChange}
             />
-            <div> No Related books, enter a new search</div>
+            <div style={{textAlign: "center"}}><h1>No Related books, enter a new search</h1></div>
         </div>
     )
 }

@@ -19,6 +19,7 @@ export default class GoogleBookmark extends Component{
                     volumes={this.props.volume}
                     printChange={this.props.printChange}
                     bookChange={this.props.bookChange}
+                    filterForm={this.props.filterForm}
                 />
                 <BookList books={this.props.books}/>
                 <div>No Results Enter a new Search</div>

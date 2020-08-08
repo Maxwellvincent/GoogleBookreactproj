@@ -29,23 +29,23 @@ export default class App extends React.Component {
       console.log(print);
 
       const url = `https://www.googleapis.com/books/v1/volumes?q=${userSearch}&printType=${this.state.printType}&filter=${this.state.bookType}`;
+
+      const fixUrl = encodeURI(url);
       // const options = {
       //   method: 'GET',
       //   headers: {
     
       //   }
       // };
-      console.log(url);
-      fetch(url)
+      console.log(fixUrl);
+      fetch(fixUrl)
       .then(resp => resp.json())
       .then(data => {
-        
         if(data.totalItems === 0){
           console.log("This is firing!!");
           this.setState({
             books: []
-          })
-          return <ErrorMessage />
+          });
         } else {
           console.log(data)
           const arrOfBooks = data.items.map(item => {
@@ -78,6 +78,7 @@ export default class App extends React.Component {
   componentDidMount(){
     const userSearch = this.state.userSearch;
     const url = `https://www.googleapis.com/books/v1/volumes?q=${userSearch}&printType=${this.state.printType}&filter=${this.state.bookType}`;
+    const fixUrl = encodeURI(url);
     // const options = {
     //   method: 'GET',
     //   headers: {
@@ -85,7 +86,7 @@ export default class App extends React.Component {
     //   }
     // };
     
-    fetch(url)
+    fetch(fixUrl)
     .then(resp => resp.json())
     .then(data => {
       
@@ -101,7 +102,7 @@ export default class App extends React.Component {
   }
 
   render(){
-    // console.log(this.state.books);
+    
     return (
       <div className="App">
         <GoogleBookmark 
